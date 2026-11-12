@@ -1,4 +1,6 @@
-# Does a Brain Foundation Model Know the Brain's Maps?
+# An In-Silico Audit of Topographic Organization in a Multimodal Brain-Response Model
+
+*Does a brain foundation model know the brain's maps?*
 
 **Live page: https://jakubstrawa1.github.io/audit-multimodal-brain-response/**
 
