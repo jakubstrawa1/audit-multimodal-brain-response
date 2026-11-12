@@ -1,0 +1,73 @@
+paths:
+  stimuli: work/stimuli_ring_area
+  predictions: work/predictions_ring_area
+  references: work/references
+  results: work/results
+screen:
+  size_px: 512
+  fps: 30
+  max_ecc_deg: 10.0
+  background: 128
+  fixation_px: 4
+retinotopy:
+  wedge_width_deg: 45
+  wedge_period: 32
+  wedge_cycles_each_direction: 3
+  ring_period: 32
+  ring_cycles_each_direction: 3
+  ring_min_ecc_deg: 0.4
+  flicker_hz: 4
+  blank_pad: 12
+  ring_area_match: true
+hemifield:
+  block: 10
+  repeats: 4
+motion:
+  block: 12
+  cycles: 6
+  n_dots: 400
+  dot_px: 3
+  speed_deg_s: 6.0
+  direction_switch_s: 2.0
+tonotopy:
+  sample_rate: 16000
+  f_low_hz: 175
+  n_bands: 10
+  band_semitones: 6
+  band_duration: 6.4
+  sweeps_each_direction: 4
+  tone_ms: 140
+  gap_ms: 20
+  level_dbfs: -20
+  blank_pad: 12
+fit:
+  tr: 1.0
+  lags:
+  - -3
+  - -2
+  - -1
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  prf_ecc_grid: 16
+  prf_angle_grid: 24
+  prf_sigmas_deg:
+  - 0.5
+  - 1.0
+  - 2.0
+  - 4.0
+  tuning_centres: 40
+  tuning_widths_oct:
+  - 0.5
+  - 1.0
+  - 2.0
+evaluate:
+  min_fit_r: 0.3
+  n_spins: 1000
+  n_label_perms: 1000

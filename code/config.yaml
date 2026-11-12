@@ -1,0 +1,65 @@
+# In-silico mapping of TRIBE v2. All durations in seconds.
+paths:
+  stimuli: work/stimuli          # generated videos/audio + design files
+  predictions: work/predictions_tribev2  # real TRIBE outputs, one .npz per experiment
+  references: work/references    # small atlas/template files (downloaded once, < 1 MB)
+  results: work/results
+
+# Virtual screen: TRIBE has no notion of visual angle, so we DEFINE the frame
+# radius as `max_ecc_deg` degrees. Rank-based metrics do not depend on this choice;
+# it only decides which template vertices (eccentricity <= max_ecc_deg) are compared.
+screen:
+  size_px: 512          # square frames: V-JEPA 2 centre-crops to a square, so nothing is lost
+  fps: 30
+  max_ecc_deg: 10.0
+  background: 128
+  fixation_px: 4
+
+retinotopy:
+  wedge_width_deg: 45
+  wedge_period: 32
+  wedge_cycles_each_direction: 3     # clockwise then counter-clockwise
+  ring_period: 32
+  ring_cycles_each_direction: 3      # expanding then contracting
+  ring_min_ecc_deg: 0.4
+  flicker_hz: 4                      # checkerboard contrast reversals per second (x2 flips)
+  blank_pad: 12                      # blank at start and end of each run
+
+hemifield:
+  block: 10
+  repeats: 4                         # each repeat = left, right, blank
+
+motion:
+  block: 12
+  cycles: 6                          # each cycle = moving block + static block
+  n_dots: 400
+  dot_px: 3
+  speed_deg_s: 6.0
+  direction_switch_s: 2.0            # expanding <-> contracting
+
+tonotopy:
+  sample_rate: 16000
+  f_low_hz: 175                      # 10 bands of 6 semitones: 175 Hz - 5.6 kHz (as NNDb-3T+)
+  n_bands: 10
+  band_semitones: 6
+  band_duration: 6.4
+  sweeps_each_direction: 4           # ascending file and descending file
+  tone_ms: 140
+  gap_ms: 20
+  level_dbfs: -20
+  blank_pad: 12
+
+# Model fitting on predicted time courses (1 sample per second)
+fit:
+  tr: 1.0
+  lags: [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8]  # residual lag after TRIBE's built-in 5 s shift
+  prf_ecc_grid: 16
+  prf_angle_grid: 24
+  prf_sigmas_deg: [0.5, 1.0, 2.0, 4.0]
+  tuning_centres: 40                 # log-spaced best-frequency candidates
+  tuning_widths_oct: [0.5, 1.0, 2.0]
+
+evaluate:
+  min_fit_r: 0.3                     # vertices whose best model fit is below this are ignored
+  n_spins: 1000                      # spin-test permutations
+  n_label_perms: 1000                # stimulus-label permutations (tonotopy)

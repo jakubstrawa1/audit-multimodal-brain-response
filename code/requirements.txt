@@ -1,0 +1,13 @@
+# analysis, stimuli, stand-in model (laptop)
+numpy>=1.26
+scipy>=1.10
+pandas>=2.0
+pyyaml>=6.0
+nibabel>=5.0
+nilearn>=0.10        # fsaverage5 mesh (bundled) + surface plots
+matplotlib>=3.7
+imageio-ffmpeg>=0.4  # provides an ffmpeg binary for writing the videos
+pillow
+tqdm>=4.66
+# real model (install separately, in its own environment - it pins torch<2.7):
+#   uv pip install "tribev2 @ git+https://github.com/facebookresearch/tribev2.git"

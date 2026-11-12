@@ -1,0 +1,5 @@
+test,value,null_mean,p,n_vertices,expected_if_model_knows_it
+T0 auditory core+belt vertices with tuning fit r >= thr (fraction),1.0,,,253,high
+"T1 A1 best frequency vs Heschl's axis (Spearman), spin p",-0.0674519710604327,-0.0036979695022825764,0.418,45,"< 0 (high posteromedial, low anterolateral)"
+"T1b same, stimulus-label permutation p",-0.0674519710604327,0.002182910082401811,0.3430290872617854,45,< 0
+"T2 spread of best frequency in core+belt (IQR, octaves)",0.14102564102564052,,,253,> ~1 octave if there is a map; ~0 if all vertices share one tuning

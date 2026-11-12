@@ -14,7 +14,9 @@ published human atlases.
   not a true positional code.
 
 Full writeup, hypotheses and controls are in [`assets/paper.pdf`](assets/paper.pdf) (also
-linked from the live page).
+linked from the live page). The full analysis pipeline -- stimulus generation, model
+inference, fitting and evaluation -- is in [`code/`](code/), including `config.yaml` with
+every stimulus parameter referenced in the Methods section.
 
 ![Summary poster](poster/poster.png)
 
@@ -47,6 +49,13 @@ assets/
 poster/
   poster.png          square summary poster (LinkedIn/Facebook-ready)
   poster.html          source for the poster, with its own crops/ images
+code/
+  config.yaml          every stimulus/fitting parameter referenced in the paper
+  scripts/             00-04: references, stimuli, model inference, fitting, evaluation
+  tmap/                shared library code (stimuli, fitting, references, spin test)
+  controls/            config + instructions for the 7 robustness controls
+  example_results/     small pre-computed example outputs
+  notebooks/           Colab notebook for running TRIBE v2 on a free GPU
 ```
 
 ## Preview locally

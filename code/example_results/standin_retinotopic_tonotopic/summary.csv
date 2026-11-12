@@ -1,0 +1,14 @@
+test,value,null_mean,p,n_vertices,expected_if_model_knows_it
+R1 V1 contralateral effect (d),2.7276718616485596,0.138045190070932,0.006993006993006993,467.0,> 0
+R0 V1-V3 vertices with pRF fit r >= thr (fraction),1.0,,,594.0,high
+R2 polar angle vs template (circular r),0.9968294201300109,-0.0392027699635609,0.000999000999000999,594.0,> 0
+R2b pRFs in the contralateral hemifield (fraction),1.0,,,499.0,~1 (0.5 = chance)
+R3 eccentricity vs template (Spearman),0.9914698778751387,-0.0008077300729852044,0.000999000999000999,594.0,> 0
+"R4 wedge power at f / (f + 2f), V1-V3 median",0.603729389397432,,,594.0,> 0.5 (position); < 0.5 means orientation-driven
+M1 moving-static effect in MT+ (d),3.9515533447265625,0.16293109529465438,0.000999000999000999,86.0,> rest of cortex
+"M1b moving-static effect, rest of cortex (d)",0.1442447155714035,,,,
+M2 top-1% motion vertices inside MT+ (fraction),0.4195121951219512,0.004198398750244093,,205.0,> 0.004 (MT+ share of cortex)
+T0 auditory core+belt vertices with tuning fit r >= thr (fraction),1.0,,,253.0,high
+"T1 A1 best frequency vs Heschl's axis (Spearman), spin p",-0.990333780793485,-0.002430981192121239,0.006493506493506494,45.0,"< 0 (high posteromedial, low anterolateral)"
+"T1b same, stimulus-label permutation p",-0.990333780793485,-0.015263870894219383,0.006993006993006993,45.0,< 0
+"T2 spread of best frequency in core+belt (IQR, octaves)",1.9743589743589745,,,253.0,> ~1 octave if there is a map; ~0 if all vertices share one tuning
