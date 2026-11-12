@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1200px;
+    height: 1200px;
+    background: #faf9f6;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #161616;
+  }
+  .wrap {
+    width: 1200px;
+    height: 1200px;
+    padding: 54px 60px 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kicker {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a8782;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 38px;
+    line-height: 1.18;
+    font-weight: 700;
+    margin-top: 10px;
+    max-width: 1000px;
+  }
+  .subtitle {
+    font-family: Helvetica, Arial, sans-serif;
+    margin-top: 12px;
+    font-size: 15px;
+    color: #4a4844;
+    max-width: 980px;
+    line-height: 1.5;
+  }
+
+  .rule { border-top: 2px solid #161616; margin-top: 22px; }
+
+  .grid {
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex: 1;
+    min-height: 0;
+  }
+  .cell {
+    padding: 22px 28px 18px 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    border-bottom: 1px solid #c9c6bf;
+  }
+  .cell.col1 { border-right: 1px solid #c9c6bf; padding-right: 30px; }
+  .cell.col2 { padding-left: 30px; }
+  .cell.rowlast { border-bottom: none; }
+
+  .num {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    color: #8a8782;
+    text-transform: uppercase;
+  }
+  .verdict {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .verdict.neg { color: #a63b2e; }
+  .verdict.pos { color: #2d6a4f; }
+  .verdict.mid { color: #9a7417; }
+
+  .figbox {
+    margin-top: 10px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid #d8d5cd;
+  }
+  .figbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+  .ctitle { font-size: 21px; font-weight: 700; margin-top: 12px; }
+  .cdesc {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #3a3835;
+    margin-top: 6px;
+    line-height: 1.42;
+    flex: 1;
+    min-height: 0;
+  }
+  .cstat {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    color: #6b6861;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  .insight {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 2px solid #161616;
+    flex-shrink: 0;
+  }
+  .insight .lbl {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #8a8782;
+    margin-bottom: 8px;
+  }
+  .insight .txt {
+    font-size: 19px;
+    line-height: 1.4;
+    color: #161616;
+  }
+  .insight .txt b { font-weight: 700; }
+
+  footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-shrink: 0;
+  }
+  .author {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #161616;
+  }
+  .author span { color: #8a8782; font-weight: 400; }
+  .link {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    color: #6b6861;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">In-Silico Neuroscience</div>
+  <h1>Does a Brain Foundation Model Know the Brain's Maps?</h1>
+  <div class="subtitle">
+    I tested TRIBE v2 (Meta/FAIR's video+audio+text &rarr; fMRI model) on the classic stimuli
+    neuroscientists use to map the brain, and found a sharp split between what it keeps and
+    what it throws away.
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="grid">
+    <div class="cell col1">
+      <div class="num">H1 &mdash; Retinotopy &nbsp;&middot;&nbsp; <span class="verdict neg">Absent</span></div>
+      <div class="figbox"><img src="crops/h1_angle.png"></div>
+      <div class="ctitle">No polar-angle map</div>
+      <div class="cdesc">The template (left) shows a smooth gradient across visual cortex. TRIBE v2's prediction (right) does not reproduce it &mdash; spatial averaging erases position.</div>
+      <div class="cstat">d = 0.05, not significant &middot; robust across 7 controls</div>
+    </div>
+
+    <div class="cell col2">
+      <div class="num">H3 &mdash; Motion &nbsp;&middot;&nbsp; <span class="verdict pos">Present</span></div>
+      <div class="figbox"><img src="crops/h3_motion.png"></div>
+      <div class="ctitle">MT+ nails it</div>
+      <div class="cdesc">Moving vs. static dots produce a sharp response that lands exactly in area MT+ &mdash; feature identity survives even though position does not.</div>
+      <div class="cstat">d = 4.31, p = 0.001 &middot; 52&times; enrichment in MT+</div>
+    </div>
+
+    <div class="cell col1 rowlast">
+      <div class="num">H2 &mdash; Eccentricity &nbsp;&middot;&nbsp; <span class="verdict mid">Looked real, wasn't</span></div>
+      <div class="figbox"><img src="crops/h2_rings.png"></div>
+      <div class="ctitle">An image-statistics illusion</div>
+      <div class="cdesc">Shrink or grow the ring stimulus (above) and a seemingly real eccentricity gradient appears &mdash; it tracks image statistics, not true visual-field position.</div>
+      <div class="cstat">flips sign across 3 of 3 geometry controls</div>
+    </div>
+
+    <div class="cell col2 rowlast">
+      <div class="num">H4 &mdash; Tonotopy &nbsp;&middot;&nbsp; <span class="verdict neg">Absent</span></div>
+      <div class="figbox"><img src="crops/h4_tonotopy.png"></div>
+      <div class="ctitle">No frequency gradient</div>
+      <div class="cdesc">Best frequency (dots) does not slope across A1's posteromedial-to-anterolateral axis &mdash; confirmed even with loudness-equalized tones.</div>
+      <div class="cstat">&rho; = &minus;0.07, not significant &middot; spread 0.14 octaves</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="lbl">The headline finding</div>
+    <div class="txt">Codes that depend on <b>where</b> something is are destroyed by spatial averaging, in both vision and audition. Codes that depend on <b>what</b> something is &mdash; like motion direction &mdash; survive intact.</div>
+  </div>
+
+  <footer>
+    <div class="author">Jakub Strawa <span>&middot; StrawAI, Krak&oacute;w</span></div>
+    <div class="link">github.com/jakubstrawa1/audit-multimodal-brain-response</div>
+  </footer>
+
+</div>
+</body>
+</html>
