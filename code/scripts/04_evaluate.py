@@ -241,6 +241,6 @@ if "tono_bf_hz" in M:
     ax.legend(frameon=False, fontsize=8)
     ax.set_title(tag, fontsize=8)
     fig.tight_layout()
-    fig.savefig(out / "fig_tonotopy_gradient.png", dpi=130)
+    fig.savefig(out / "fig_tonotopy_gradient.png", dpi=130, bbox_inches="tight")
     plt.close(fig)
 print(f"\nsummary + figures -> {out}")
