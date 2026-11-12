@@ -14,6 +14,26 @@ published human atlases.
 Full writeup, hypotheses and controls are in [`assets/paper.pdf`](assets/paper.pdf) (also
 linked from the live page).
 
+![Summary poster](poster/poster.png)
+
+## Stimuli
+
+The classic retinotopy, hemifield and motion stimuli, as actually fed to the model:
+
+![Stimulus frames](assets/figures/fig2_stimuli_frames.png)
+
+## Key results
+
+Fitted polar-angle and eccentricity maps vs. the published Benson template — no structure
+survives in either:
+
+![Retinotopy results](assets/figures/fig3_retinotopy_real.png)
+
+Hemifield, motion and best-frequency contrast maps — the motion cluster lands precisely in
+MT+, the other two show no spatial organization:
+
+![Motion, hemifield and tonotopy results](assets/figures/fig5_hemifield_motion_real.png)
+
 ## Repo contents
 
 ```
