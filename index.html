@@ -163,45 +163,49 @@
   <section id="abstract">
     <h2>Abstract</h2>
     <div class="abstract">
-      TRIBE v2 predicts fMRI responses across the cortical surface from video, audio and text,
-      and its authors validated it with category-selective localizers (faces, places, bodies,
-      words) and language contrasts. Whether the model recovers the classic topographic
-      organization of sensory cortex &mdash; retinotopy in visual areas, tonotopy in auditory
-      cortex, and direction selectivity in area MT+ &mdash; had not been tested, despite a clear
-      architectural reason to expect it might fail: TRIBE's video features are spatially pooled
-      before being fed to the response-prediction head, which should discard the position
-      information that retinotopic maps depend on. This project builds the stimuli, fitting
-      pipeline, and a positive/negative control needed to answer this, and reports results on
-      TRIBE v2's real predictions. Across all four maps, TRIBE v2 shows a sharp split:
-      retinotopy and tonotopy are both absent, while motion selectivity is not only present but
-      precisely localized to area MT+.
+      TRIBE v2 predicts fMRI responses across the cortical surface from video, audio and text.
+      Its authors validated it with category-selective localizers (faces, places, bodies,
+      words) and language contrasts, but not with the classic topographic organization of
+      sensory cortex: retinotopy, tonotopy, and motion selectivity in area MT+. There is a
+      clear architectural reason to expect retinotopy to fail: TRIBE's video features are
+      averaged over space before the response head, which should discard visual-field
+      position. This project applies mapping stimuli, a fitting pipeline adapted from standard
+      fMRI mapping analyses, and a stand-in model with known ground truth that serves as a
+      positive and negative control, comparing the fitted maps with human atlases using spin
+      tests. TRIBE v2 shows a sharp split: there is no contralateral hemifield response and no
+      polar-angle map, robustly across stimulus controls; no tonotopic gradient in primary
+      auditory cortex, even with loudness-equalized tones; and an eccentricity-like gradient
+      that appears only when the ring geometry changes, consistent with global image
+      statistics rather than a positional code. In contrast, motion selectivity is strong and
+      precisely localized: 22% of the 1% most motion-selective vertices fall in MT+, which
+      covers 0.42% of cortex.
     </div>
   </section>
 
   <section id="hypotheses">
-    <h2>Pre-registered hypotheses</h2>
-    <p class="lead">Four hypotheses, pre-registered before running the real model on video.</p>
+    <h2>Hypotheses</h2>
+    <p class="lead">Four hypotheses, stated before running the real model on video.</p>
     <table class="hypotheses">
       <tr><th>Hypothesis</th><th>Prediction</th><th>Verdict</th></tr>
       <tr>
         <td><b>H1</b><br>polar angle / contralaterality</td>
         <td>Absent &mdash; no contralateral V1 response, no polar-angle map</td>
-        <td><span class="verdict absent">Confirmed absent</span></td>
+        <td><span class="verdict absent">Confirmed</span></td>
       </tr>
       <tr>
         <td><b>H2</b><br>eccentricity</td>
         <td>Partly present &mdash; an eccentricity-like gradient from global image statistics</td>
-        <td><span class="verdict present">Confirmed (as predicted: not a true positional code)</span></td>
+        <td><span class="verdict present">Consistent with prediction (not a true positional code)</span></td>
       </tr>
       <tr>
         <td><b>H3</b><br>motion</td>
         <td>Present &mdash; moving &gt; static dots peaks in MT+</td>
-        <td><span class="verdict present">Confirmed present</span></td>
+        <td><span class="verdict present">Confirmed</span></td>
       </tr>
       <tr>
         <td><b>H4</b><br>tonotopy</td>
         <td>Open &mdash; best-frequency gradient in A1</td>
-        <td><span class="verdict absent">Disconfirmed</span></td>
+        <td><span class="verdict absent">No tonotopic gradient</span></td>
       </tr>
     </table>
   </section>
@@ -347,8 +351,8 @@
       The one result that doesn't hold up cleanly &mdash; eccentricity (R3) &mdash; flips from a
       non-significant null to a significant, template-aligned correlation whenever the ring's
       rendering geometry changes, while contralaterality and polar angle stay null throughout.
-      This looks like the pre-registered H2 scenario: an eccentricity-<i>like</i> signal from
-      global image statistics, not a genuine positional code.
+      This matches the H2 prediction: an eccentricity-<i>like</i> signal from global image
+      statistics, not a genuine positional code.
     </p>
   </section>
 
